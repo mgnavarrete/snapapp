@@ -1,1 +1,1 @@
-# snapapp
+# minttuapp
