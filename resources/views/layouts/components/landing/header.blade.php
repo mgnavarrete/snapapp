@@ -10,7 +10,7 @@
                         <!-- Start::header-element -->
                         <div class="header-element">
                             <div class="horizontal-logo">
-                                <a href="{{url('index')}}" class="header-logo">
+                                <a href="www.minttu.cl" class="header-logo">
                                     <img src="{{asset('build/assets/images/brand-logos/toggle-white.png')}}" alt="logo" class="toggle-logo">
                                     <img src="{{asset('build/assets/images/brand-logos/toggle-white.png')}}" alt="logo" class="toggle-dark">
                                 </a>
@@ -19,7 +19,7 @@
                         <!-- End::header-element -->
 
                         <!-- Start::header-element -->
-                        <div class="header-element">
+                        {{-- <div class="header-element">
                             <!-- Start::header-link -->
                             <a href="javascript:void(0);" class="sidemenu-toggle header-link" data-bs-toggle="sidebar">
                                 <span class="open-toggle">
@@ -27,7 +27,7 @@
                                 </span>
                             </a>
                             <!-- End::header-link -->
-                        </div>
+                        </div> --}}
                         <!-- End::header-element -->
 
                     </div>
