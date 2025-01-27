@@ -67,11 +67,11 @@
                     </div>
                     <div class="col-xl-12 about-company-stats mb-0 fixed-position-card">
                         <div class="row justify-content-center">
-                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 ">
+                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-11 ">
                                 <div class="card custom-card text-default shadow border ">
                                     <div class="card-body p-0">
                                         <div class="row align-items-center justify-content-center">
-                                            <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4 ">
                                                 <div class="text-center p-2 w-100 h-100 d-flex align-items-center justify-content-center">
                                                     <div class="d-flex flex-column align-items-center mb-1">
                                                         <a href="" data-bs-toggle="modal" data-bs-target="#agregarImagen">
@@ -81,7 +81,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4 ">
                                                 <div class="text-center p-1 w-100 h-100 d-flex align-items-center justify-content-center">
                                                     <div class="d-flex flex-column align-items-center mb-1">
                                                         <a href="">
