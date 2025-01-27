@@ -12,7 +12,7 @@
                     <!-- Start:: Section-3 -->
                     <section class="section " id="about">
                         <div class="container text-center">
-                            <p class="fs-12 fw-semibold text-success mb-1"><span class="landing-section-heading">Eventos Activos</span></p>
+                            <p class="fs-12 fw-semibold text-success mb-1"><span class="landing-section-heading">Eventos</span></p>
                             <h2 class="fw-semibold mb-2 text-fixed ">Erwin & Fran</h2>
                             <div class="row justify-content-center">
                                 <div class="col-xl-7">
