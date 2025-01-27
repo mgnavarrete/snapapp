@@ -16,10 +16,10 @@
                         <input type="text" class="form-control form-control-lg bg-outline-primary" id="nombre" name="nombre" placeholder="Nombre Fotógrafo">
                     </div>
 
-                    <!-- Seleccionar Imágenes -->
+                    <!-- Seleccionar Imágenes o Videos -->
                     <div class="col-xl-12 mb-3">
-                        <label for="imagenes" class="form-label text-default">Seleccionar Imágenes</label>
-                        <input type="file" class="form-control form-control-lg bg-outline-primary" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+                        <label for="media" class="form-label text-default">Seleccionar Imágenes o Videos</label>
+                        <input type="file" class="form-control form-control-lg bg-outline-primary" id="media" name="media[]" accept="image/*,video/*" capture="environment" multiple>
                     </div>
 
                     <div class="modal-footer">
