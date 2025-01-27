@@ -26,7 +26,7 @@
                                             @foreach ($eventos as $evento)
                                             <div class="ms-sm-5 ms-2 text-center">
                                                 <a href="{{route('eventoShow', $evento->id_evento)}}">
-                                                    <img src="{{asset('build/assets/images/wedding.png')}}" alt="image" class="featur-icon" style="width: 150px; height: 150px;">
+                                                    <img src="{{asset('build/assets/images/wedding.png')}}" alt="image" class="featur-icon" style="width: 160px; height: 150px;">
                                                     <h5 class="mt-3 text-fixed" style="font-size: 1.5rem;">{{$evento->nombre}}</h5>
                                                 </a>
                                             </div>                    
