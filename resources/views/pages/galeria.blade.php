@@ -7,7 +7,7 @@
 @section('content')
 <nav class="navbar navbar-expand-lg navbar-dark-transparent">
     <div class="container-fluid">
-        <a class="navbar-brand" href="javascript:void(0);"><img src="{{asset('build/assets/images/brand-logos/desktop-logo.png')}}" alt=""></a>
+        <a class="navbar-brand" href="{{route('eventoShow', $id_evento)}}"><img src="{{asset('build/assets/images/brand-logos/desktop-logo.png')}}" alt=""></a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

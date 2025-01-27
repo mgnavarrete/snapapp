@@ -38,6 +38,20 @@ class FileUploadController extends Controller
             throw new \Exception('Token de acceso no encontrado. Asegúrate de haber ejecutado el script de autenticación.');
         }
 
+        // Verificar si el token ha expirado y refrescarlo si es necesario
+        if ($client->isAccessTokenExpired()) {
+            logger()->warning('El token de acceso ha expirado, intentando refrescar.');
+            if ($client->getRefreshToken()) {
+                $newAccessToken = $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+                file_put_contents(storage_path('app/google/token.json'), json_encode($newAccessToken));
+                $client->setAccessToken($newAccessToken);
+            } else {
+                dd('no se puede refrescar el token de acceso');
+                logger()->error('No se puede refrescar el token de acceso.');
+                throw new \Exception('Token de acceso expirado y no se puede refrescar.');
+            }
+        }
+
         $service = new Drive($client);
 
         foreach ($request->file('imagenes') as $file) {
@@ -52,17 +66,22 @@ class FileUploadController extends Controller
 
             try {
                 // Subir la imagen a Google Drive
+                logger()->info('Intentando subir archivo a Google Drive: ' . $file->getClientOriginalName());
                 $fileMetadata = new Drive\DriveFile([
                     'name' => $file->getClientOriginalName(),
                     'parents' => [$id_carpeta] // ID de la carpeta en Google Drive
                 ]);
+
                 $content = file_get_contents($file->getPathname());
+
                 $driveFile = $service->files->create($fileMetadata, [
                     'data' => $content,
                     'mimeType' => $file->getMimeType(),
                     'uploadType' => 'multipart',
                     'fields' => 'id'
                 ]);
+
+                logger()->info('Archivo subido exitosamente con ID: ' . $driveFile->id);
 
                 $googleDriveFileId = $driveFile->id;
 

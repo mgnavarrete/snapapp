@@ -216,9 +216,6 @@
 
 @section('scripts')
 
-        <!-- JSVECTOR MAPS JS -->
-        <script src="{{asset('build/assets/libs/jsvectormap/js/jsvectormap.min.js')}}"></script>
-        <script src="{{asset('build/assets/libs/jsvectormap/maps/world-merc.js')}}"></script>
 
         <!-- APEX CHARTS JS -->
         <script src="{{asset('build/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
