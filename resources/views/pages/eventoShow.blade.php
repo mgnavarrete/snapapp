@@ -22,6 +22,7 @@
 
         .fixed-height-card {
             height: 600px; /* Establece la altura fija de 800px */
+
         }
     </style>
    <link rel="stylesheet" href="{{asset('build/assets/libs/swiper/swiper-bundle.min.css')}}">
@@ -38,7 +39,7 @@
         <div class="aboutus-banner custom-banner-background mb-5">
             <div class="aboutus-banner-content custom-aboutus-banner-content">
                 <div class="row">
-                    <div class="col-xxl-12 col-xl-12">
+                    <div class="col-xxl-12 col-xl-12 col-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
                             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="p-0 text-start mb-4">
@@ -100,26 +101,28 @@
                 </div>
             </div>
         </div>
-        <div class="row d-flex flex-row flex-wrap mt-3">
-            @foreach ($secciones as $seccion)
-            <div class="col">
-            <div class="card custom-card overlay-card m-2 fixed-height-card">
-                <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
-                <div class="card-img-overlay d-flex flex-column p-0">
-                    <div class="card-body">
-                        <div class="card-text mt-5">
-                            <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">{{ $seccion->nombre }}</h2>
-                            <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">
-                                {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
-                                {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
-                            </p>
+        <div class="row d-flex flex-row flex-wrap mt-3 swiper-container">
+            <div class="swiper-wrapper">
+                @foreach ($secciones as $seccion)
+                <div class="col swiper-slide" style="flex: 0 0 350px;">
+                    <div class="card custom-card overlay-card m-2 fixed-height-card">
+                        <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                        <div class="card-img-overlay d-flex flex-column p-0">
+                            <div class="card-body">
+                                <div class="card-text mt-5">
+                                    <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">{{ $seccion->nombre }}</h2>
+                                    <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">
+                                        {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
+                                        {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-footer text-fixed-white">15 fotos y 2 videos totales.</div>
                         </div>
                     </div>
-                    <div class="card-footer text-fixed-white">15 fotos y 2 videos totales.</div>
                 </div>
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
         
         <div class="row d-flex flex-row flex-wrap ">
@@ -212,4 +215,12 @@
 
         <!-- INTERNAL SWIPER JS -->
         @vite('resources/assets/js/swiper.js')
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+                freeMode: true,
+            });
+        </script>
 @endsection
