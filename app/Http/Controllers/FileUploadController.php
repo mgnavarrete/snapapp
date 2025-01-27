@@ -42,6 +42,7 @@ class FileUploadController extends Controller
         if ($client->isAccessTokenExpired()) {
             logger()->warning('El token de acceso ha expirado, intentando refrescar.');
             if ($client->getRefreshToken()) {
+
                 $newAccessToken = $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
                 file_put_contents(storage_path('app/google/token.json'), json_encode($newAccessToken));
                 $client->setAccessToken($newAccessToken);

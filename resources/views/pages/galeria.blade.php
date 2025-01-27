@@ -47,7 +47,7 @@
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
             <a href="{{$imagen->link}}" class="glightbox card" data-gallery="gallery1">
-                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 100px; object-fit: cover;">
+                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 400px; object-fit: cover;">
             </a>
         </div>
         @endforeach
