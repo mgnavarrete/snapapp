@@ -109,9 +109,8 @@
             </div>
         </div>
         <div class="card custom-card m-2">
-            <div class="card-body">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+            <div class="card-body d-flex justify-content-center" style="overflow-x: auto;">
+
                         @foreach ($secciones as $seccion)
                         <div class="swiper-slide" style="flex: 0 0 350px;">
                             <div class="card custom-card overlay-card m-2 fixed-height-card">
@@ -131,8 +130,6 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>
-                </div>
             </div>
         </div>
         
