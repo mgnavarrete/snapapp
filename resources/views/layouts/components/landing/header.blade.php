@@ -19,7 +19,7 @@
                         <!-- End::header-element -->
 
                         <!-- Start::header-element -->
-                        {{-- <div class="header-element">
+                        <div class="header-element">
                             <!-- Start::header-link -->
                             <a href="javascript:void(0);" class="sidemenu-toggle header-link" data-bs-toggle="sidebar">
                                 <span class="open-toggle">
@@ -27,7 +27,7 @@
                                 </span>
                             </a>
                             <!-- End::header-link -->
-                        </div> --}}
+                        </div>
                         <!-- End::header-element -->
 
                     </div>
