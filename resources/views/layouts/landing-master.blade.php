@@ -12,7 +12,7 @@
         <meta name="keywords" content="dashboard bootstrap, laravel template, admin panel in laravel, php admin panel, admin panel for laravel, admin template bootstrap 5, laravel admin panel, admin dashboard template, hrm dashboard, vite laravel, admin dashboard, ecommerce admin dashboard, dashboard laravel, analytics dashboard, template dashboard, admin panel template, bootstrap admin panel template">
 
         <!-- TITLE -->
-		<title> MINTTU </title>
+		<title> Minttu - Snap </title>
 
         <!-- FAVICON -->
         <link rel="icon" href="{{asset('build/assets/images/brand-logos/favicon.png')}}" type="image/x-icon">
@@ -47,13 +47,13 @@
 
             <!-- HEADER -->
 
-            {{-- @include('layouts.components.landing.header') --}}
+            @include('layouts.components.landing.header')
 
             <!-- END HEADER -->
 
             <!-- SIDEBAR -->
 
-            {{-- @include('layouts.components.landing.sidebar') --}}
+            @include('layouts.components.landing.sidebar')
 
             <!-- END SIDEBAR -->
 
