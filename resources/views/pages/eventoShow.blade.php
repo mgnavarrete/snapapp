@@ -108,11 +108,11 @@
                 </div>
             </div>
         </div>
-        <div class="row d-flex flex-row flex-wrap mt-3 swiper-container">
+        <div class="row d-flex flex-row flex-wrap mt-3 swiper-container me-5">
             <div class="swiper-wrapper">
                 @foreach ($secciones as $seccion)
-                <div class="col swiper-slide" style="flex: 0 0 350px;">
-                    <div class="card custom-card overlay-card m-2 fixed-height-card">
+                <div class="col swiper-slide me-2" style="flex: 0 0 350px;">
+                    <div class="card custom-card overlay-card m-2 ms-3  fixed-height-card">
                         <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
                         <div class="card-img-overlay d-flex flex-column p-0">
                             <div class="card-body">
@@ -124,7 +124,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="card-footer text-fixed-white">15 fotos y 2 videos totales.</div>
+                            <div class="card-footer text-fixed-white">Haz click para ver las fotos y videos.</div>
                         </div>
                     </div>
                 </div>
