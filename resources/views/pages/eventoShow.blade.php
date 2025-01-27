@@ -18,11 +18,20 @@
             justify-content: flex-start;
             padding-top: 5px;
             padding-left: 5px;
+            
         }
 
         .fixed-height-card {
             height: 600px; /* Establece la altura fija de 800px */
 
+        }
+
+        .fixed-position-card {
+            position: absolute;
+            top: 745px;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
    <link rel="stylesheet" href="{{asset('build/assets/libs/swiper/swiper-bundle.min.css')}}">
@@ -56,10 +65,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12 about-company-stats mb-0">
+                    <div class="col-xl-12 about-company-stats mb-0 fixed-position-card">
                         <div class="row justify-content-center">
                             <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 ">
-                                <div class="card custom-card text-default shadow border">
+                                <div class="card custom-card text-default shadow border ">
                                     <div class="card-body p-0">
                                         <div class="row align-items-center justify-content-center">
                                             <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4">
