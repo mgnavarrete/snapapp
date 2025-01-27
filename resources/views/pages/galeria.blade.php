@@ -46,8 +46,8 @@
                 $fileId = $imagen->id_google;
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
-            <a href="{{$directLink}}" class="glightbox card" data-gallery="gallery1">
-                <img src="{{ $directLink }}" alt="image">
+            <a href="http://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" class="glightbox card" data-gallery="gallery1">
+                <img src="http://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image">
             </a>
         </div>
         @endforeach
@@ -88,9 +88,6 @@
 
 @section('scripts')
 
-        <!-- JSVECTOR MAPS JS -->
-        <script src="{{asset('build/assets/libs/jsvectormap/js/jsvectormap.min.js')}}"></script>
-        <script src="{{asset('build/assets/libs/jsvectormap/maps/world-merc.js')}}"></script>
 
         <!-- APEX CHARTS JS -->
         <script src="{{asset('build/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
