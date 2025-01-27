@@ -30,8 +30,6 @@
             position: absolute;
             top: 550px;
             left: 0;
-            width: 100%;
-            height: 100%;
         }
     </style>
    <link rel="stylesheet" href="{{asset('build/assets/libs/swiper/swiper-bundle.min.css')}}">
