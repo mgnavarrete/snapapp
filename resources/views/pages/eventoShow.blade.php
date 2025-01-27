@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="card custom-card m-2">
+        <div class="card custom-card m-2 flex-row flex-wrap">
             <div class="card-body">
                 <div class="row d-flex flex-row flex-wrap mt-3 swiper-container me-5">
                     <div class="swiper-wrapper">
