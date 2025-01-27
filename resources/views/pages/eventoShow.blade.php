@@ -22,7 +22,7 @@
         }
 
         .fixed-height-card {
-            height: 600px; /* Establece la altura fija de 800px */
+            height: 500px; /* Establece la altura fija de 800px */
 
         }
 
@@ -117,8 +117,8 @@
                         <div class="card-img-overlay d-flex flex-column p-0">
                             <div class="card-body">
                                 <div class="card-text mt-5">
-                                    <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">{{ $seccion->nombre }}</h2>
-                                    <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">
+                                    <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 30px;">{{ $seccion->nombre }}</h2>
+                                    <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 20px;">
                                         {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
                                         {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
                                     </p>
