@@ -6,7 +6,7 @@
             background-image: url('{{ asset('build/assets/images/eventos/civil.jpg') }}');
             background-size: cover;
             width: 100%;
-            height: 800px;
+            height: 600px;
             background-color: white;
             opacity: 1;
         }
@@ -28,7 +28,7 @@
 
         .fixed-position-card {
             position: absolute;
-            top: 745px;
+            top: 550px;
             left: 0;
             width: 100%;
             height: 100%;
