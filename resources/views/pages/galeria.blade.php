@@ -46,8 +46,8 @@
                 $fileId = $imagen->id_google;
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
-            <a href="http://localhost:3000/proxy?url={{ urlencode($directLink) }}" class="glightbox card" data-gallery="gallery1">
-                <img src="http://localhost:3000/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 100px; object-fit: cover;">
+            <a href="http://mnt-app.ddns.net:5050/proxy?url={{ urlencode($directLink) }}" class="glightbox card" data-gallery="gallery1">
+                <img src="http://mnt-app.ddns.net:5050/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 100px; object-fit: cover;">
             </a>
         </div>
         @endforeach
