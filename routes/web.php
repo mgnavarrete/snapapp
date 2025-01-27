@@ -7,6 +7,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ComentarioController;
 use App\Models\Rol;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\GaleriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');  // Muestra l
 // EVENTO //
 
 Route::get('/evento/{id}', [EventoController::class, 'show'])->name('eventoShow');  // Muestra la vista de evento
+
+Route::get('/galeria/{id}', [GaleriaController::class, 'show'])->name('galeria');  // Muestra la vista de galeria
 
 Route::post('/comentario/{id}/create', [ComentarioController::class, 'create'])->name('comentarios.create');  // Crea un comentario
 
