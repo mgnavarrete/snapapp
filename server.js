@@ -1,7 +1,7 @@
 import express from "express";
 import fetch from "node-fetch";
 const app = express();
-const PORT = 5050;
+const PORT = 3000;
 
 // Ruta para el proxy
 app.get("/proxy", async (req, res) => {
