@@ -108,27 +108,31 @@
                 </div>
             </div>
         </div>
-        <div class="row d-flex flex-row flex-wrap mt-3 swiper-container me-5">
-            <div class="swiper-wrapper">
-                @foreach ($secciones as $seccion)
-                <div class="col swiper-slide me-2" style="flex: 0 0 350px;">
-                    <div class="card custom-card overlay-card m-2 ms-3  fixed-height-card">
-                        <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
-                        <div class="card-img-overlay d-flex flex-column p-0">
-                            <div class="card-body">
-                                <div class="card-text mt-5">
-                                    <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 30px;">{{ $seccion->nombre }}</h2>
-                                    <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 20px;">
-                                        {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
-                                        {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
-                                    </p>
+        <div class="card custom-card m-2">
+            <div class="card-body">
+                <div class="row d-flex flex-row flex-wrap mt-3 swiper-container me-5">
+                    <div class="swiper-wrapper">
+                        @foreach ($secciones as $seccion)
+                        <div class="col swiper-slide me-2" style="flex: 0 0 350px;">
+                            <div class="card custom-card overlay-card m-2 ms-3 fixed-height-card">
+                                <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                                <div class="card-img-overlay d-flex flex-column p-0">
+                                    <div class="card-body">
+                                        <div class="card-text mt-5">
+                                            <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 30px;">{{ $seccion->nombre }}</h2>
+                                            <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 20px;">
+                                                {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
+                                                {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-fixed-white">Haz click para ver las fotos y videos.</div>
                                 </div>
                             </div>
-                            <div class="card-footer text-fixed-white">Haz click para ver las fotos y videos.</div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
         
