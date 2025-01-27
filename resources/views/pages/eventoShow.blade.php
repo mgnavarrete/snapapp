@@ -109,11 +109,11 @@
             </div>
         </div>
         <div class="card custom-card m-2">
-            <div class="card-body d-flex justify-content-center" style="overflow-x: auto;">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+            <div class="card-body d-flex justify-content-center p-0" style="overflow-x: auto;">
+                <div class="swiper-container p-0 me-3">
+                    <div class="swiper-wrapper p-0 me-3">
                         @foreach ($secciones as $seccion)
-                        <div class="swiper-slide" style="flex: 0 0 350px;">
+                        <div class="swiper-slide " style="flex: 0 0 350px;">
                             <div class="card custom-card overlay-card m-2 fixed-height-card">
                                 <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
                                 <div class="card-img-overlay d-flex flex-column p-0">
