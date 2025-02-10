@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+@php
+    \Carbon\Carbon::setLocale('es');
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-dark-transparent">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{route('eventoShow', $id_evento)}}"><img src="{{asset('build/assets/images/brand-logos/desktop-logo.png')}}" alt=""></a>
@@ -14,7 +18,7 @@
         <div class="navbar-collapse collapse" id="navbarColor03" style="">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"> Todas las fotos y videos</a>
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"> Todos </a>
                 </li>
                 @foreach ($secciones as $seccion)
                 <li class="nav-item">
@@ -37,17 +41,14 @@
 
 <div class="container-fluid p-0 m-0">
     <div class="row m-3">
-
-
         @foreach ($imagenes as $imagen)
-        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-6">
             @php
-            
                 $fileId = $imagen->id_google;
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
-            <a href="{{$imagen->link}}" class="glightbox card" data-gallery="gallery1">
-                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 400px; object-fit: cover;">
+            <a href="" class="glightbox card" data-gallery="gallery1" data-bs-toggle="modal" data-bs-target="#fileShow{{ $imagen->id_imagen }}">
+                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 200px; object-fit: cover;">
             </a>
         </div>
         @endforeach
@@ -67,7 +68,7 @@
     
 </div>
 
-
+@include('pages.modals.fileShow')
 {{-- Mostrar mensaje de éxito --}}
 @if(session('success'))
     <script>
