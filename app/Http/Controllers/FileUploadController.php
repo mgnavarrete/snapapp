@@ -35,21 +35,19 @@ class FileUploadController extends Controller
             $accessToken = json_decode(file_get_contents(storage_path('app/google/token.json')), true);
             $client->setAccessToken($accessToken);
         } else {
-            throw new \Exception('Token de acceso no encontrado. Asegúrate de haber ejecutado el script de autenticación.');
+            return back()->with('error', 'Token de acceso no encontrado. Asegúrate de haber ejecutado el script de autenticación.');
         }
 
         // Verificar si el token ha expirado y refrescarlo si es necesario
         if ($client->isAccessTokenExpired()) {
             logger()->warning('El token de acceso ha expirado, intentando refrescar.');
             if ($client->getRefreshToken()) {
-
                 $newAccessToken = $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
                 file_put_contents(storage_path('app/google/token.json'), json_encode($newAccessToken));
                 $client->setAccessToken($newAccessToken);
             } else {
-                dd('no se puede refrescar el token de acceso');
                 logger()->error('No se puede refrescar el token de acceso.');
-                throw new \Exception('Token de acceso expirado y no se puede refrescar.');
+                return back()->with('error', 'Token de acceso expirado y no se puede refrescar.');
             }
         }
 
