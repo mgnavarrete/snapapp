@@ -129,23 +129,9 @@
                         <div class="swiper-slide " style="flex: 0 0 350px;">
                             <div class="card custom-card overlay-card m-2 fixed-height-card">
                                 
-                               @if ($numImg == 0)
-                                    <img src="{{ asset($seccion->path_img) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
-                               @endif
-
-                               @if ($numImg > 0)
                                
-                                       
-                                @php
-                                    $imagen = $imagenes[$seccion->id_seccion];
-                                    $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
-                                    $
-                                @endphp
-
-                               <img src="https://drive.minttu.cl/proxy?url={{ urlencode("https://drive.google.com/uc?export=view&id=" . $imagen->id_google) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
-                                
-                               @endif
-
+                                <img src="{{ asset($seccion->path_img) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                               
 
 
                                 <div class="card-img-overlay d-flex flex-column p-0">
