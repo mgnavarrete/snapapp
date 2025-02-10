@@ -64,7 +64,7 @@ class FileUploadController extends Controller
         $service = new Drive($client);
 
         foreach ($request->file('imagenes') as $file) {
-            dd("Se conecto a drive");
+
             // Depuración: Verificar el nombre del archivo
             logger()->info('Procesando archivo: ' . $file->getClientOriginalName());
 
