@@ -32,8 +32,16 @@ class FileUploadController extends Controller
 
         // Cargar el token de acceso desde el archivo
         if (file_exists(storage_path('app/google/token.json'))) {
-            $accessToken = json_decode(file_get_contents(storage_path('app/google/token.json')), true);
-            $client->setAccessToken($accessToken);
+            try {
+                $accessToken = json_decode(file_get_contents(storage_path('app/google/token.json')), true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new \Exception('Error al decodificar el token JSON: ' . json_last_error_msg());
+                }
+                $client->setAccessToken($accessToken);
+            } catch (\Exception $e) {
+                logger()->error('Error al establecer el token de acceso: ' . $e->getMessage());
+                throw new \Exception('Token de acceso no válido. Por favor, regenera el token.');
+            }
         } else {
             throw new \Exception('Token de acceso no encontrado. Asegúrate de haber ejecutado el script de autenticación.');
         }
