@@ -18,18 +18,16 @@
         <div class="navbar-collapse collapse" id="navbarColor03" style="">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"> Todos </a>
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);" data-seccion="todos"> Todos </a>
                 </li>
                 @foreach ($secciones as $seccion)
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);">{{ $seccion->nombre }}</a>
+                    <a class="nav-link" href="javascript:void(0);" data-seccion="{{ $seccion->id }}">{{ $seccion->nombre }}</a>
                 </li>
                 @endforeach
-              
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar Fotógrafo" aria-label="Search">
-                <button class="btn btn-dark" type="submit">Buscar</button>
+                <input class="form-control me-2" type="search" id="searchInput" placeholder="Buscar Fotógrafo" aria-label="Search">
             </form>
         </div>
     </div>
@@ -42,7 +40,7 @@
 <div class="container-fluid p-0 m-0">
     <div class="row m-3">
         @foreach ($imagenes as $imagen)
-        <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-6" data-fotografo="{{ $imagen->nombre }}">
             @php
                 $fileId = $imagen->id_google;
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
@@ -83,6 +81,50 @@
     </script>
 @endif
 
+<script>
+    document.getElementById('searchInput').addEventListener('input', filterImages);
+
+    function filterImages() {
+        const searchValue = document.getElementById('searchInput').value.toLowerCase();
+        const images = document.querySelectorAll('[data-fotografo]');
+
+        images.forEach(image => {
+            const fotografo = image.getAttribute('data-fotografo').toLowerCase();
+            if (fotografo.includes(searchValue)) {
+                image.style.display = 'block';
+            } else {
+                image.style.display = 'none';
+            }
+        });
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            // Remover la clase 'active' de todos los enlaces
+            document.querySelectorAll('.nav-link').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+
+            // Añadir la clase 'active' al enlace clicado
+            this.classList.add('active');
+
+            const seccionId = this.getAttribute('data-seccion');
+            filterBySeccion(seccionId);
+        });
+    });
+
+    function filterBySeccion(seccionId) {
+        const images = document.querySelectorAll('[data-fotografo]');
+        images.forEach(image => {
+            const imageSeccionId = image.getAttribute('data-seccion');
+            if (seccionId === 'todos' || imageSeccionId === seccionId) {
+                image.style.display = 'block';
+            } else {
+                image.style.display = 'none';
+            }
+        });
+    }
+</script>
 
 @endsection
 

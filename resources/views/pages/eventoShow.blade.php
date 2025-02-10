@@ -71,35 +71,39 @@
                                         <div class="row align-items-center justify-content-center">
                                             <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4 ">
                                                 <div class="text-center p-2 w-100 h-100 d-flex align-items-center justify-content-center">
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#agregarImagen">
                                                     <div class="d-flex flex-column align-items-center mb-1">
-                                                        <a href="" data-bs-toggle="modal" data-bs-target="#agregarImagen">
-                                                            <i class="bx bx-upload mt-1 mb-2" style="font-size: 40px; color: var(--primary-color);" title="Subir Imágenes/Videos"></i>
-                                                        </a>
+                                                        
+                                                        <i class="bx bx-upload mt-1 mb-2" style="font-size: 40px; color: var(--primary-color);" title="Subir Imágenes/Videos"></i>
                                                         <span style="font-size:12px;">Subir</span>
                                                     </div>
+                                                </a>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4 ">
                                                 <div class="text-center p-1 w-100 h-100 d-flex align-items-center justify-content-center">
-                                                    <div class="d-flex flex-column align-items-center mb-1">
-                                                        <a href="{{ route('galeria', ['id' => $evento->id_evento]) }}">
+                                                    <a href="{{ route('galeria', ['id' => $evento->id_evento]) }}">
+                                                        <div class="d-flex flex-column align-items-center mb-1">
                                                             <i class="bx bx-images mt-1 mb-2" style="font-size: 40px; color: var(--primary-color);" title="Ver Galería"></i>
-                                                        </a>
-                                                        <span style="font-size:12px;">Ver Galería</span>
-                                                    </div>
+                                                            <span style="font-size:12px;">Ver Galería</span>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-4 col-sm-4 col-4">
                                                 <div class="text-center p-1 w-100 h-100 d-flex align-items-center justify-content-center">
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#agregarComentario">
                                                     <div class="d-flex flex-column align-items-center mb-1">
-                                                        <a href="" data-bs-toggle="modal" data-bs-target="#agregarComentario">
+                                                            
                                                             <i class="bx bx-chat mt-1 mb-2" style="font-size: 40px; color: var(--primary-color);" title="Comentarios"></i>
-                                                        </a>
+                                                        
                                                         <span style="font-size:12px;">Saluda a los Novios</span>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
