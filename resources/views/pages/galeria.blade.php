@@ -22,7 +22,7 @@
                 </li>
                 @foreach ($secciones as $seccion)
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);" data-seccion="{{ $seccion->id }}">{{ $seccion->nombre }}</a>
+                    <a class="nav-link" href="javascript:void(0);" data-seccion="{{ $seccion->id_seccion }}">{{ $seccion->nombre }}</a>
                 </li>
                 @endforeach
             </ul>
@@ -40,9 +40,26 @@
 <div class="container-fluid p-0 m-0">
     <div class="row m-3">
         @foreach ($imagenes as $imagen)
-        <div class="col-lg-3 col-md-3 col-sm-3 col-6" data-fotografo="{{ $imagen->nombre }}">
+        @php
+            $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
+
+
+            foreach ($secciones as $seccion) {
+                if ($fecha_captura->between(\Carbon\Carbon::parse($seccion->fecha_inicio), \Carbon\Carbon::parse($seccion->fecha_final))) {
+                    $seccion_id = $seccion->id_seccion;
+                }
+            }
+
+        @endphp
+        <script>
+            console.log({{ $seccion_id }});
+        </script>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-6" data-fotografo="{{ $imagen->nombre }}" data-seccion="{{ $seccion_id }}">
             @php
                 $fileId = $imagen->id_google;
+
+
+
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
             <a href="" class="glightbox card" data-gallery="gallery1" data-bs-toggle="modal" data-bs-target="#fileShow{{ $imagen->id_imagen }}">

@@ -24,7 +24,6 @@ class GaleriaController extends Controller
         foreach ($secciones as $seccion) {
             $imagenes_por_seccion[$seccion->id] = $imagenes->whereBetween('fecha_captura', [$seccion->fecha_inicio, $seccion->fecha_final]);
         }
-
         // Pasar los datos a la vista
         return view('pages.galeria', compact('id_evento', 'evento', 'secciones', 'imagenes_por_seccion', 'imagenes'));
     }
