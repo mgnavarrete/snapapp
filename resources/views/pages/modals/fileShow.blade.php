@@ -31,10 +31,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between">
-                    <i class="bx bx-left-arrow-alt ms-5" style="font-size: 50px; color: var(--primary-color); {{ $index === 0 ? 'pointer-events: none; opacity: 0.5;' : '' }}" title="Anterior"
-                       data-bs-toggle="modal" 
-                       data-bs-target="#fileShow{{ $index > 0 ? $imagenes[$index - 1]->id_imagen : $imagen->id_imagen }}"></i>
+                <div class="d-flex justify-content-center">
                     <a href="{{ $imagen->link}}" class="bx bx-cloud-download mb-2" style="font-size: 50px; color: var(--primary-color);" title="Descargar"></a>
                 </div>
                 
