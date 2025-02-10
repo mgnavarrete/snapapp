@@ -117,9 +117,37 @@
                 <div class="swiper-container p-0 me-3">
                     <div class="swiper-wrapper p-0 me-3">
                         @foreach ($secciones as $seccion)
+                        @php
+                        $numImg = 0;
+                            foreach ($imagenes as $imagen) {
+                                $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
+                                if ($fecha_captura->between(\Carbon\Carbon::parse($seccion->fecha_inicio), \Carbon\Carbon::parse($seccion->fecha_final))) {
+                                    $numImg++;
+                                }
+                            }
+                        @endphp
                         <div class="swiper-slide " style="flex: 0 0 350px;">
                             <div class="card custom-card overlay-card m-2 fixed-height-card">
-                                <img src="{{asset($seccion->path_img)}}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                                
+                               @if ($numImg == 0)
+                                    <img src="{{ asset($seccion->path_img) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                               @endif
+
+                               @if ($numImg > 0)
+                               
+                                       
+                                @php
+                                    $imagen = $imagenes[$seccion->id_seccion];
+                                    $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
+                                    $
+                                @endphp
+
+                               <img src="https://drive.minttu.cl/proxy?url={{ urlencode("https://drive.google.com/uc?export=view&id=" . $imagen->id_google) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+                                
+                               @endif
+
+
+
                                 <div class="card-img-overlay d-flex flex-column p-0">
                                     <div class="card-body">
                                         <div class="card-text mt-5">
@@ -130,9 +158,13 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="card-footer text-fixed-white">Haz click para ver las fotos y videos.</div>
+                    
+                                    <div class="card-footer text-fixed-white">{{$numImg}} fotos y videos subidos.</div>
                                 </div>
+
+
                             </div>
+
                         </div>
                         @endforeach
                     </div>

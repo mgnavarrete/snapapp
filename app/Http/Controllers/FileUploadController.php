@@ -19,8 +19,10 @@ class FileUploadController extends Controller
         $request->validate([
             'nombre' => 'string|max:255',
             'imagenes' => 'required|array',
-            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif', // Máximo 30MB por imagen
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm', // Máximo 30MB por imagen
         ]);
+
+
 
         $carpeta = Carpeta::where('id_evento', $id)->first();
         $id_carpeta = $carpeta->id_google;
