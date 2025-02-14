@@ -13,8 +13,10 @@ class Imagen extends Model
     protected $primaryKey = 'id_imagen';
     protected $table = 'imagenes';
 
+
     protected $fillable = [
         'id_evento',
+        'tipo',
         'link',
         'id_google',
         'fecha_captura',

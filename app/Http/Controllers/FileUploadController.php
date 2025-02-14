@@ -19,7 +19,7 @@ class FileUploadController extends Controller
         $request->validate([
             'nombre' => 'string|max:255',
             'imagenes' => 'required|array',
-            'imagenes.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm', // Aceptar imágenes y videos
+            'imagenes.*' => 'mimes:jpeg,png,jpg,heic,gif,mp4,mov,avi,mkv,webm', // Aceptar imágenes y videos
         ]);
 
 
@@ -97,9 +97,11 @@ class FileUploadController extends Controller
                 logger()->info('Archivo subido exitosamente con ID: ' . $driveFile->id);
 
                 $googleDriveFileId = $driveFile->id;
-
+                $tipoMime = $file->getMimeType();
+                $tipo = strpos($tipoMime, 'image/') === 0 ? 'imagen' : 'video';
                 // Guardar el ID de Google Drive en la base de datos
                 $imagen = new Imagen();
+                $imagen->tipo = $tipo;
                 $imagen->id_evento = $id;
                 $imagen->nombre = $request->input('nombre');
                 $imagen->id_google = $googleDriveFileId; // Guardar el ID de Google Drive

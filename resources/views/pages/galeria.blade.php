@@ -57,13 +57,18 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-6" data-fotografo="{{ $imagen->nombre }}" data-seccion="{{ $seccion_id }}">
             @php
                 $fileId = $imagen->id_google;
-
-
-
                 $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
             @endphp
+
             <a href="" class="glightbox card" data-gallery="gallery1" data-bs-toggle="modal" data-bs-target="#fileShow{{ $imagen->id_imagen }}">
-                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 200px; object-fit: cover;">
+                @if($imagen->tipo === 'video')
+                    <video style="width: 100%; height: 200px; object-fit: cover;" controls>
+                        <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                @else
+                    <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 200px; object-fit: cover;">
+                @endif
             </a>
         </div>
         @endforeach
