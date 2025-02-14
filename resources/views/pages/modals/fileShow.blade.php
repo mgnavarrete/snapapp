@@ -24,13 +24,13 @@
                             $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
                         @endphp                      
                         @if($imagen->tipo === 'video')
-                        <video style="width: 100%; height: 200px; object-fit: cover;" controls>
-                            <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
-                            Tu navegador no soporta la etiqueta de video.
-                        </video>
-                    @else
-                        <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 200px; object-fit: cover;">
-                    @endif
+                    <video style="width: 100%; object-fit: cover;" controls>
+                        <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                @else
+                    <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; object-fit: cover;">
+                @endif
                         <div class="card-img-overlay d-flex flex-column p-0 over-content-bottom">
                             <div class="card-footer text-fixed-white">Subida  {{ (\Carbon\Carbon::parse($imagen->created_at)->diffForHumans()) }} | Fotógrafo: {{ $imagen->nombre }}</div>
                         </div>
