@@ -19,7 +19,7 @@ class FileUploadController extends Controller
         $request->validate([
             'nombre' => 'string|max:255',
             'imagenes' => 'required|array',
-            'imagenes.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm|max:30720', // Aceptar imágenes y videos
+            'imagenes.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm', // Aceptar imágenes y videos
         ]);
 
 
