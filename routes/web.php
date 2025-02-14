@@ -8,6 +8,7 @@ use App\Http\Controllers\ComentarioController;
 use App\Models\Rol;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\PresentacionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +32,8 @@ Route::get('/galeria/{id}', [GaleriaController::class, 'show'])->name('galeria')
 
 Route::post('/comentario/{id}/create', [ComentarioController::class, 'create'])->name('comentarios.create');  // Crea un comentario
 
+Route::get('/presentacion/{id?}', [PresentacionController::class, 'show'])->name('presentacion');  // Muestra la vista de presentacion
 
-
-
-
+Route::get('/nuevas-imagenes', [PresentacionController::class, 'obtenerNuevasImagenes'])->name('nuevasImagenes');
 
 Route::post('/upload/{id_evento}', [FileUploadController::class, 'uploadImage'])->name('upload.image');
