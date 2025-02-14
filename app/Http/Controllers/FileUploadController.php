@@ -19,7 +19,7 @@ class FileUploadController extends Controller
         $request->validate([
             'nombre' => 'string|max:255',
             'imagenes' => 'required|array',
-            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm|max:30720', // Máximo 30MB por imagen o video
+            'imagenes.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv,webm|max:30720', // Aceptar imágenes y videos
         ]);
 
 
@@ -78,7 +78,7 @@ class FileUploadController extends Controller
 
 
             try {
-                // Subir la imagen a Google Drive
+                // Subir el archivo a Google Drive
                 logger()->info('Intentando subir archivo a Google Drive: ' . $file->getClientOriginalName());
                 $fileMetadata = new Drive\DriveFile([
                     'name' => $file->getClientOriginalName(),
@@ -104,16 +104,16 @@ class FileUploadController extends Controller
                 $imagen->nombre = $request->input('nombre');
                 $imagen->id_google = $googleDriveFileId; // Guardar el ID de Google Drive
                 $imagen->fecha_captura = $fecha_captura;
-                $imagen->link = "https://drive.google.com/file/d/{$googleDriveFileId}/view"; // Enlace a la imagen
+                $imagen->link = "https://drive.google.com/file/d/{$googleDriveFileId}/view"; // Enlace al archivo
                 $imagen->save();
 
-                logger()->info('Imagen subida a Google Drive con ID: ' . $googleDriveFileId);
+                logger()->info('Archivo subido a Google Drive con ID: ' . $googleDriveFileId);
             } catch (\Exception $e) {
-                logger()->error('Error al subir la imagen a Google Drive: ' . $e->getMessage());
-                return back()->with('error', 'Error al subir la imagen a Google Drive: ' . $e->getMessage());
+                logger()->error('Error al subir el archivo a Google Drive: ' . $e->getMessage());
+                return back()->with('error', 'Error al subir el archivo a Google Drive: ' . $e->getMessage());
             }
         }
 
-        return back()->with('success', 'Imágenes subidas correctamente :)');
+        return back()->with('success', 'Archivos subidos correctamente :)');
     }
 }
