@@ -48,12 +48,13 @@
                 if ($fecha_captura->between(\Carbon\Carbon::parse($seccion->fecha_inicio), \Carbon\Carbon::parse($seccion->fecha_final))) {
                     $seccion_id = $seccion->id_seccion;
                 }
+                else {
+                    $seccion_id = 'todos';
+                }
             }
 
         @endphp
-        <script>
-            console.log({{ $seccion_id }});
-        </script>
+
         <div class="col-lg-3 col-md-3 col-sm-3 col-6" data-fotografo="{{ $imagen->nombre }}" data-seccion="{{ $seccion_id }}">
             @php
                 $fileId = $imagen->id_google;
