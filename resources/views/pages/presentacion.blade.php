@@ -28,7 +28,6 @@
     <div class="swiper-container  justify-content-center d-flex align-items-center" style="background-color: #000;">
         <div class="swiper-wrapper" style="background-color: #000;">
             @foreach($imagenes as $imagen)
-                @if($imagen->tipo !== 'video')
                 <div class="swiper-slide h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
                     <div class="col-12">
                         @php
@@ -37,11 +36,15 @@
                         @endphp
             
                         <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
+                            @if($imagen->tipo === 'imagen')
                             <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
+                          
+                               
+                            @endif
                         </a>
                     </div> 
+
                 </div>
-                @endif
             @endforeach
         </div>
     </div>
@@ -54,21 +57,6 @@
                 delay: 5000,
                 disableOnInteraction: false,
             },
-            on: {
-                slideChange: function () {
-                    // Detener todos los videos
-                    document.querySelectorAll('.swiper-slide video').forEach(video => {
-                        video.pause();
-                    });
-
-                    // Reproducir el video del slide activo
-                    var activeSlide = swiper.slides[swiper.activeIndex];
-                    var video = activeSlide.querySelector('video');
-                    if (video) {
-                        video.play();
-                    }
-                }
-            }
         });
 
         // Aquí puedes implementar la lógica para actualizar las imágenes en tiempo real
@@ -82,20 +70,21 @@
                     data.forEach(imagen => {
                         var slide = document.createElement('div');
                         slide.classList.add('swiper-slide');
-                        slide.style.backgroundColor = '#000'; // Cambia el fondo de cada slide
-                        slide.style.display = 'flex';
-                        slide.style.justifyContent = 'center';
-                        slide.style.alignItems = 'center';
-                        
                         if (imagen.tipo === 'imagen') {
-                            slide.innerHTML = `
-                            @php
+                            slide.innerHTML = `<div class="col-12">
+                        @php
                             $fileId = $imagen->id_google;
                             $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
-                            @endphp
-                                <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
+                        @endphp
+            
+                        <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
+                            @if($imagen->tipo === 'imagen')
                             <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
-                                </a>`;
+                          
+                               
+                            @endif
+                        </a>
+                    </div> `;
                         } 
                         swiper.appendSlide(slide);
                     });
