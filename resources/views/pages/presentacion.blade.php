@@ -60,6 +60,21 @@
                 delay: 5000,
                 disableOnInteraction: false,
             },
+            on: {
+                slideChange: function () {
+                    // Detener todos los videos
+                    document.querySelectorAll('.swiper-slide video').forEach(video => {
+                        video.pause();
+                    });
+
+                    // Reproducir el video del slide activo
+                    var activeSlide = swiper.slides[swiper.activeIndex];
+                    var video = activeSlide.querySelector('video');
+                    if (video) {
+                        video.play();
+                    }
+                }
+            }
         });
 
         // Aquí puedes implementar la lógica para actualizar las imágenes en tiempo real
