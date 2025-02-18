@@ -37,7 +37,7 @@
             
                         <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
                             @if($imagen->tipo === 'video')
-                                <video style="width: 100%; height: 100%; object-fit: cover;">
+                                <video autoplay style="width: 100%; height: 100%; object-fit: cover;">
                                     <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
                                     Tu navegador no soporta la etiqueta de video.
                                 </video>
