@@ -28,6 +28,7 @@
     <div class="swiper-container  justify-content-center d-flex align-items-center" style="background-color: #000;">
         <div class="swiper-wrapper" style="background-color: #000;">
             @foreach($imagenes as $imagen)
+                @if($imagen->tipo !== 'video')
                 <div class="swiper-slide h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
                     <div class="col-12">
                         @php
@@ -36,18 +37,11 @@
                         @endphp
             
                         <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
-                            @if($imagen->tipo === 'video')
-                                <video autoplay style="width: 100%; height: 100%; object-fit: cover;">
-                                    <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
-                                </video>
-                            @else
-                                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
-                            @endif
+                            <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
                         </a>
                     </div> 
-
                 </div>
+                @endif
             @endforeach
         </div>
     </div>
@@ -88,11 +82,21 @@
                     data.forEach(imagen => {
                         var slide = document.createElement('div');
                         slide.classList.add('swiper-slide');
-                        if (imagen.tipo === 'video') {
-                            slide.innerHTML = `<video controls><source src="${imagen.link}" type="video/mp4">Tu navegador no soporta la etiqueta de video.</video>`;
-                        } else {
-                            slide.innerHTML = `<img src="${imagen.link}" alt="Imagen">`;
-                        }
+                        slide.style.backgroundColor = '#000'; // Cambia el fondo de cada slide
+                        slide.style.display = 'flex';
+                        slide.style.justifyContent = 'center';
+                        slide.style.alignItems = 'center';
+                        
+                        if (imagen.tipo === 'imagen') {
+                            slide.innerHTML = `
+                            @php
+                            $fileId = $imagen->id_google;
+                            $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
+                            @endphp
+                                <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
+                            <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
+                                </a>`;
+                        } 
                         swiper.appendSlide(slide);
                     });
                 });
