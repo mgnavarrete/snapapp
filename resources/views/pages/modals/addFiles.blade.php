@@ -22,16 +22,18 @@
                         <input type="file" class="form-control form-control-lg bg-outline-primary" id="imagenes" name="imagenes[]" accept="image/*,video/*" capture="environment" multiple required>
                     </div>
 
+                    <div class="d-flex justify-content-end">
+                    <div class="spinner-border text-primary d-none me-3" role="status" id="spinnerAgregarImagen">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-3" id="subirBtn">Subir Archivos</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                     <!-- Contenedor para la vista previa de imágenes -->
                     <div id="preview" class="col-xl-12 mb-3"></div>
 
-                    <div class="modal-footer">
-                        <div class="spinner-border text-primary d-none" role="status" id="spinnerAgregarImagen">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="subirBtn">Subir</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+                        
+                 
                 </form>
             </div>
         </div>

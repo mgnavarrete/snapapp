@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head style="background-color: #000;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentación de Imágenes y Videos</title>
@@ -24,11 +24,11 @@
         }
     </style>
 </head>
-<body>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
+<body style="background-color: #000;">
+    <div class="swiper-container h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
+        <div class="swiper-wrapper" style="background-color: #000;">
             @foreach($imagenes as $imagen)
-                <div class="swiper-slide h-100">
+                <div class="swiper-slide h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
 
                      @php
                             $fileId = $imagen->id_google;
@@ -52,7 +52,7 @@
         var swiper = new Swiper('.swiper-container', {
             loop: true,
             autoplay: {
-                delay: 3000,
+                delay: 5000,
                 disableOnInteraction: false,
             },
         });

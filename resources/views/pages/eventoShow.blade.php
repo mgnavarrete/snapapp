@@ -112,59 +112,14 @@
                 </div>
             </div>
         </div>
-        <div class="card custom-card m-2">
-            <div class="card-body d-flex justify-content-center p-0" style="overflow-x: auto;">
-                <div class="swiper-container p-0 me-3">
-                    <div class="swiper-wrapper p-0 me-3">
-                        @foreach ($secciones as $seccion)
-                        @php
-                        $numImg = 0;
-                            foreach ($imagenes as $imagen) {
-                                $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
-                                if ($fecha_captura->between(\Carbon\Carbon::parse($seccion->fecha_inicio), \Carbon\Carbon::parse($seccion->fecha_final))) {
-                                    $numImg++;
-                                }
-                            }
-                        @endphp
-                        <div class="swiper-slide " style="flex: 0 0 350px;">
-                            <div class="card custom-card overlay-card m-2 fixed-height-card">
-                                
-                               
-                                <img src="{{ asset($seccion->path_img) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
-                               
 
-
-                                <div class="card-img-overlay d-flex flex-column p-0">
-                                    <div class="card-body">
-                                        <div class="card-text mt-5">
-                                            <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 30px;">{{ $seccion->nombre }}</h2>
-                                            <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 20px;">
-                                                {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
-                                                {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
-                                            </p>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="card-footer text-fixed-white">{{$numImg}} fotos y videos subidos.</div>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <div class="row d-flex flex-row flex-wrap ">
 
             <div class="card custom-card w-100 ms-2" style="background-color: transparent;">
                 <div class="card-header">
                     <h5 class="card-title">Saludos de nuestros invitados</h5>
                 </div>
-                <div class="card-body p-0 d-flex justify-content-center" style="height: 700px; overflow-y: auto;">
+                <div class="card-body p-0 d-flex justify-content-center" style="height: 500px; overflow-y: auto;">
                     <ul class="list-unstyled mb-0 notification-container w-100">
                         @foreach ($comentarios as $comentario)
                         <li class="d-flex justify-content-center w-100">
@@ -203,9 +158,93 @@
            
         </div>
 
+        <div class="card custom-card m-2 p-0" style="background-color: transparent;">
+            <div class="card-header">
+                <h5 class="card-title">Fotos y videos de la boda</h5>
+            </div>
+            <div class="card-body d-flex justify-content-center p-0" style="overflow-x: auto;">
+                <div class="swiper-container p-0 me-3">
+                    <div class="swiper-wrapper p-0 me-3">
+                        @foreach ($secciones as $seccion)
+                        @php
+                        $numImg = 0;
+                        $imagenesSeccion = [];
+                            foreach ($imagenes as $imagen) {
+                                $fecha_captura = \Carbon\Carbon::parse($imagen->fecha_captura);
+                                if ($fecha_captura->between(\Carbon\Carbon::parse($seccion->fecha_inicio), \Carbon\Carbon::parse($seccion->fecha_final))) {
+                                    $numImg++;
+                                    $imagenesSeccion[] = $imagen;
+                                }
+                            }
+     
+                        @endphp
+     
+                        <div class="swiper-slide " style="flex: 0 0 350px;">
+                            
+
+                            <div class="card custom-card overlay-card m-2 fixed-height-card">  
+                                <div id="carousel{{$seccion->id_seccion}}" class="carousel slide h-100" data-bs-ride="carousel">
+                                    <div class="carousel-indicators h-100">
+                                        <button type="button" data-bs-target="#carousel{{$seccion->id_seccion}}"
+                                            data-bs-slide-to="0" class="active" aria-current="true"
+                                            aria-label="Slide{{$seccion->id_seccion}} 1"></button>
+    
+                                        @foreach ($imagenesSeccion as $imagen)                                                                                
+                                        <button type="button" data-bs-target="#carousel{{$seccion->id_seccion}}"
+                                            data-bs-slide-to="{{ $loop->index }}" aria-label="Slide{{$seccion->id_seccion}} {{ $loop->index + 1 }}"></button>
+                                        @endforeach
+    
+                                    </div>
+                                    <div class="carousel-inner h-100">
+                                        <div class="carousel-item active h-100">                     
+                        
+                                            <img src="{{ asset($seccion->path_img) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+
+                                        </div>
+                                        @foreach ($imagenesSeccion as $imagen)
+                                        @if($imagen->tipo === 'imagen')
+                                        <div class="carousel-item h-100">
+                                            @php
+                                            $fileId = $imagen->id_google;
+                                            $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
+                                            @endphp   
+                                                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" class="card-img" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
+
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="card-img-overlay d-flex flex-column p-0">
+                                    <div class="card-body">
+                                        
+                                        <div class="card-text mt-5">
+                                            
+                                            <h2 class="text-fixed-white mt-5 ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 30px;">{{ $seccion->nombre }}</h2>
+                                            <p class="text-fixed-white ms-5" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); font-size: 20px;">
+                                                {{ \Carbon\Carbon::parse($seccion->fecha_inicio)->format('H:i') }} - 
+                                                {{ \Carbon\Carbon::parse($seccion->fecha_final)->format('H:i') }}
+                                            </p>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                    
+                                    <div class="card-footer text-fixed-white">{{$numImg}} fotos y videos subidos.</div>
+                                </div>
 
 
+                            </div>
 
+                        </div>
+       
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <div class="text-center landing-main-footer py-2 mb-2">
@@ -217,11 +256,11 @@
 
 
 {{-- Mostrar mensaje de éxito --}}
-@if(session('success'))
+{{-- @if(session('success'))
     <script>
         alert("{{ session('success') }}");
     </script>
-@endif
+@endif --}}
 
 {{-- Mostrar mensaje de error --}}
 @if($errors->any())

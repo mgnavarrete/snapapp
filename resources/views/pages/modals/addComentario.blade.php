@@ -26,7 +26,7 @@
                         <div class="spinner-border text-primary d-none" role="status" id="spinnerComentario">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <button type="submit" class="btn btn-secondary" id="guardarBtnComentario">Guardar</button>
+                        <button type="submit" class="btn btn-secondary" id="guardarBtnComentario">Enviar Saludo</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                         
                     </div>
