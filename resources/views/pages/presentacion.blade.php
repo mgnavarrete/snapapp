@@ -25,23 +25,28 @@
     </style>
 </head>
 <body style="background-color: #000;">
-    <div class="swiper-container h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
+    <div class="swiper-container  justify-content-center d-flex align-items-center" style="background-color: #000;">
         <div class="swiper-wrapper" style="background-color: #000;">
             @foreach($imagenes as $imagen)
                 <div class="swiper-slide h-100 justify-content-center d-flex align-items-center" style="background-color: #000;">
-
-                     @php
+                    <div class="col-12">
+                        @php
                             $fileId = $imagen->id_google;
                             $directLink = "https://drive.google.com/uc?export=view&id=" . $fileId;
-                        @endphp                      
-                        @if($imagen->tipo === 'video')
-                    <video style="height: 100%; object-fit: cover;" controls>
-                        <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
-                        Tu navegador no soporta la etiqueta de video.
-                    </video>
-                @else
-                    <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="height: 100%; object-fit: cover;">
-                @endif
+                        @endphp
+            
+                        <a href="" class="glightbox card w-100" style="height: 500px;" data-gallery="gallery1">
+                            @if($imagen->tipo === 'video')
+                                <video style="width: 100%; height: 100%; object-fit: cover;">
+                                    <source src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" type="video/mp4">
+                                    Tu navegador no soporta la etiqueta de video.
+                                </video>
+                            @else
+                                <img src="https://drive.minttu.cl/proxy?url={{ urlencode($directLink) }}" alt="image" style="width: 100%; height: 800px; object-fit: cover;">
+                            @endif
+                        </a>
+                    </div> 
+
                 </div>
             @endforeach
         </div>
