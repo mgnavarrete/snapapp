@@ -19,7 +19,7 @@
                     <!-- Seleccionar Imágenes o Videos -->
                     <div class="col-xl-12 mb-3">
                         <label for="imagenes" class="form-label text-default">Seleccionar Imágenes o Videos</label>
-                        <input type="file" class="form-control form-control-lg bg-outline-primary" id="imagenes" name="imagenes[]" accept="image/*,video/*" capture="environment" multiple required>
+                        <input type="file" class="form-control form-control-lg bg-outline-primary" id="imagenes" name="imagenes[]" accept="image/*,video/*" multiple required>
                     </div>
 
                     <div class="d-flex justify-content-end">
