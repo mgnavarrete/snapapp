@@ -160,7 +160,7 @@
 
         <div class="card custom-card m-2 p-0" style="background-color: transparent;">
             <div class="card-header">
-                <h5 class="card-title">Fotos y videos de la boda</h5>
+                <h5 class="card-title">Fotos y videos</h5>
             </div>
             <div class="card-body d-flex justify-content-center p-0" style="overflow-x: auto;">
                 <div class="swiper-container p-0 me-3">
